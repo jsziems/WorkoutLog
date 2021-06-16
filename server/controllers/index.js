@@ -1,6 +1,6 @@
 
 module.exports = {
     userController: require('./usercontroller'),
-    journalController: require("./journalcontroller"),
+    logController: require("./logcontroller"),
   }
 

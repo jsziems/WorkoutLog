@@ -1,2 +1,7 @@
 const UserModel = require("./user")
-module.exports = { UserModel }
+const LogModel = require("./log")
+
+module.exports = { 
+    UserModel,
+    LogModel
+ }
