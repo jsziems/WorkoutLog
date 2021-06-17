@@ -6,7 +6,7 @@ const { logModel, LogModel } = require("../models")
 /* 
 ** Create a log
 */
-router.post("/create", validateJWT, async (req, res) => {
+router.post("/", validateJWT, async (req, res) => {
     const { description, definition, result } = req.body.log
     const {id } = req.user
     const logEntry = {
@@ -72,9 +72,6 @@ router.get("/:id", validateJWT, async (req, res) => {
 ** Update a log
 */
 router.put("/:id", validateJWT, async (req, res) => {
-    /* ToDo:  Handle errors properly.  Currently returns status 200 even if 
-    ** the id isn't found, or has a different owner_id.
-    */
     const { description, definition, result } = req.body.log
     const logId = req.params.id
     const userId = req.user.id
@@ -94,7 +91,8 @@ router.put("/:id", validateJWT, async (req, res) => {
 
     try {
         let update = await LogModel.update(updatedLog, query)
-        if (update) {
+        console.log(update)
+        if (update[0]) {
             res.status(200).json({
                 message: `Log for Id ${logId} has been updated`,
                 updatedLog
@@ -113,9 +111,6 @@ router.put("/:id", validateJWT, async (req, res) => {
 ** Delete a log
 */
 router.delete("/:id", validateJWT, async (req, res) => {
-    /* ToDo:  Handle errors properly.  Currently returns status 200 even if 
-    ** the id isn't found, or has a different owner_id.
-    */
     const logId = req.params.id
     const userId = req.user.id
 
