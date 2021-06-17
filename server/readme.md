@@ -6,7 +6,7 @@
 3. Open pgAdmin
 
 ### Create and Login Users
-https://github.com/jsziems/WorkoutLog/screenshots-for-readme/register-user.png
+![Register User](https://github.com/jsziems/WorkoutLog/screenshots-for-readme/register-user.png)
 
 
 ### Create, Update and Delete Workout Log Entries
